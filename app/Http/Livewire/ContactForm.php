@@ -32,6 +32,15 @@ class ContactForm extends Component
 
         // return back()->with('success_message', 'We received your message successfully and will get back to you shortly!');
 
+        $this->resetForm();
+    }
+
+    private function resetForm()
+    {
+        $this->name = '';
+        $this->email = '';
+        $this->phone = '';
+        $this->message = '';
     }
 
     public function render()
