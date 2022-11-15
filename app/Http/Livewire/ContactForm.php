@@ -17,12 +17,12 @@ class ContactForm extends Component
 
     public function submitForm()
     {
-        // $contact = $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email',
-        //     'phone' => 'required',
-        //     'message' => 'required'
-        // ]);
+        $contact = $this->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'message' => 'required'
+        ]);
 
         $contact['name'] = $this->name;
         $contact['email'] = $this->email;
@@ -30,8 +30,6 @@ class ContactForm extends Component
         $contact['message'] = $this->message;
 
         Mail::to('eduardo.barijan@devsquad.com')->send(new ContactFormMailable($contact));
-
-        // session()->flash('success_message', 'We received your message successfully and will get back to you shortly!');
 
         $this->successMessage = 'We received your message successfully and will get back to you shortly!';
 
