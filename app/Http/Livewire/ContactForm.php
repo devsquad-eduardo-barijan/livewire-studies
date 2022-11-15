@@ -13,6 +13,7 @@ class ContactForm extends Component
     public $email;
     public $phone;
     public $message;
+    public $successMessage;
 
     public function submitForm()
     {
@@ -30,7 +31,9 @@ class ContactForm extends Component
 
         Mail::to('eduardo.barijan@devsquad.com')->send(new ContactFormMailable($contact));
 
-        session()->flash('success_message', 'We received your message successfully and will get back to you shortly!');
+        // session()->flash('success_message', 'We received your message successfully and will get back to you shortly!');
+
+        $this->successMessage = 'We received your message successfully and will get back to you shortly!';
 
         $this->resetForm();
     }
